@@ -16,6 +16,7 @@ const Hero = () => {
           SHITTU OLUWA<span className="text-[#ff3d1f]">SHILE</span>.B
         </h1>
       </div>
+      <p>This will e the summary</p>
     </section>
   );
 };
