@@ -5,3 +5,6 @@
     backdrop-filter: blur(15px) saturate(140%);
     -webkit-backdrop-filter: blur(6px) saturate(140%);
 }
+.welcome {
+    min-height: cl;
+}
