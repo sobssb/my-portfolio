@@ -1,1 +1,7 @@
 @import "tailwindcss";
+
+.nav {
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(15px) saturate(140%);
+    -webkit-backdrop-filter: blur(6px) saturate(140%);
+}
