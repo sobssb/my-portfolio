@@ -10,7 +10,7 @@ type parameters = {
 const useElementSize = <T extends HTMLElement = HTMLElement>({
   minSize = 10,
   maxSize = 400,
-  buffer = 2,
+  buffer = 0,
   measureRef,
 }: parameters = {}) => {
   const sizeRef = useRef<T | null>(null);

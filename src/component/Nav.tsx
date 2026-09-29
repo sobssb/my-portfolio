@@ -4,8 +4,8 @@ import { Link } from "react-router";
 
 const Nav = () => {
   return (
-    <nav className="px-2 lg:px-3 py-2 flex items-center justify-between sticky top-0 nav z-100">
-      <div className="md:max-w-20 max-w-15 lg:mr-50 md:mr-40 mr-5">
+    <nav className="px-3 py-2 flex items-center justify-between fixed top-0 nav z-500 w-full">
+      <div className="max-w-10 lg:mr-50 md:mr-40 mr-5">
         <img src={logo} alt="logo image" arial-label:string="logo" />
       </div>
       <div className="md:grow">

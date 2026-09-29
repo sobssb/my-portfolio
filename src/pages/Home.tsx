@@ -3,8 +3,10 @@ import Header from "../layout/Header";
 
 const Home = () => {
   return (
-    <div>
+    <div className="">
+      
       <Header />
+            
     </div>
   );
 };
