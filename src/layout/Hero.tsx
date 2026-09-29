@@ -18,8 +18,8 @@ const Hero = () => {
         ref={nameRef}
         className="whitespace-nowrap w-full px-3 bg-black"
       >
-        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
-          SHITTU OLUWA<span className="text-[#ff3d1f]">SHILE</span>.B
+        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-10 -mb-5 py-0">
+          SHITTU OLUWA<span className="text-[#ff3d1f]">SHILE</span>.B 
         </h1>
       </div>
 
