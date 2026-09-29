@@ -16,15 +16,15 @@ const Hero = () => {
       {/* Name of developer */}
       <div
         ref={nameRef}
-        className="whitespace-nowrap w-full px-3 md:-mt-4 mt-9"
+        className="whitespace-nowrap w-full px-3 bg-black"
       >
-        <h1 ref={lineRef} className="whitespace-nowrap inline-block ">
+        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
           SHITTU OLUWA<span className="text-[#ff3d1f]">SHILE</span>.B
         </h1>
       </div>
 
       {/* image of developer inform of icon */}
-      <div className="w-50 mx-auto grow">
+      <div className="w-50 mx-auto  relative z-20">
         <img className="" src={image} alt="icon" />
       </div>
 
