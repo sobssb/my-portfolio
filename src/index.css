@@ -4,29 +4,28 @@
 
 @import url("https://fonts.googleapis.com/css2?family=Archivo+Black&family=BBH+Hegarty&family=Bentham&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 
-h1 {
-  font-family: "BBH Hegarty", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-  
+body{
+  font-size: 13px;
+  font-weight: 500;
 }
 
-.h1{
-  background: linear-gradient(180deg, #f3ede3 0%, #f3ede3 30%, #ff3d1f 100%);
-  background-clip: text;
-  -webkiy-background-clip: text;
-  color: transparent;
+h1 {
+  font-family: "BBH Hegarty", sans-serif;
+  font-weight: bolder;
+  line-height: 0%;
+  /* font-style: bo; */
+  
 }
 
 h2 {
   font-family: "Archivo Black", sans-serif;
-  font-weight: 400;
-  font-style: normal;
+  font-weight: 600;
+  
 }
 
 .nav {
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(40px) saturate(100%);
+  backdrop-filter: blur(6px) saturate(100%);
   -webkit-backdrop-filter: blur(6px) saturate(140%);
 }
 /* .welcome {

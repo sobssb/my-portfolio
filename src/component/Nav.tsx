@@ -9,7 +9,7 @@ const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
 
   return (
-    <nav className="px-3 py-2 flex items-center justify-between fixed top-0 nav z-500 w-full md:mb-6 mb-4">
+    <nav className="px-3 py-5 md:py-3 flex items-center justify-between fixed top-0 nav z-500 w-full">
       <div className="max-w-10 lg:mr-50 md:mr-40 mr-5">
         <img src={logo} alt="logo image" arial-label:string="logo" />
       </div>
