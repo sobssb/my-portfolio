@@ -8,6 +8,14 @@ h1 {
   font-family: "BBH Hegarty", sans-serif;
   font-weight: 400;
   font-style: normal;
+  
+}
+
+.h1{
+  background: linear-gradient(180deg, #f3ede3 0%, #f3ede3 30%, #ff3d1f 100%);
+  background-clip: text;
+  -webkiy-background-clip: text;
+  color: transparent;
 }
 
 h2 {

@@ -10,7 +10,7 @@ const Work = () => {
     measureRef: lineRef,
   });
   return (
-    <section className="relative z-300 bg-white">
+    <section className="relative z-300 bg-white min-h-screen">
       {/* Name of developer */}
       <div ref={nameRef} className="whitespace-nowrap w-full px-3 text-black">
         <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">

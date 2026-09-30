@@ -10,15 +10,15 @@ const Contact = () => {
     measureRef: lineRef,
   });
   return (
-    <section className="relative z-300 text-white">
+    <section className="relative z-300 text-white min-h-screen">
       {/* Name of developer */}
       <div ref={nameRef} className="whitespace-nowrap w-full px-3 relative">
-        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
+        <h1 ref={lineRef} className="h1 whitespace-nowrap inline-block mt-5">
           Get in Touch
         </h1>
       </div>
 
-      <div className=" absolute md:bottom-18 bottom-2 w-full flex flex-row flex-nowrap justify-between gap-1 md:-mt-23 text-[11px]">
+      <div className=" w-full flex flex-row flex-nowrap justify-between gap-1 md:-mt-23 -mt-8 text-[11px]">
           <p>LET'S CHAT</p>
           <p>LET'S CHAT</p>
           <p>LET'S CHAT</p>

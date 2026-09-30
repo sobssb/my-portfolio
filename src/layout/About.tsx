@@ -10,10 +10,10 @@ const About = () => {
     measureRef: lineRef,
   });
   return (
-    <section className="relative z-300 text-white">
+    <section className="relative z-300 text-white min-h-screen">
       {/* Name of developer */}
       <div ref={nameRef} className="whitespace-nowrap w-full px-3">
-        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
+        <h1 ref={lineRef} className="h1 whitespace-nowrap inline-block mt-5">
           About Oluwashile
         </h1>
       </div>
