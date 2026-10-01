@@ -5,12 +5,14 @@ import Services from "../layout/Services";
 import About from "../layout/About";
 import Contact from "../layout/Contact";
 import Footer from "../layout/Footer";
+import DigitalCraft from "../layout/DigitalCraft";
 const Home = () => {
   return (
     <div className="">
       <Header />
       <Work />
       <Services />
+      <DigitalCraft />
       <About />
       <Contact />
       <Footer />

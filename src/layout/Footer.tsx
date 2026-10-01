@@ -18,7 +18,7 @@ const Footer = () => {
       <section ref={nameRef} className="whitespace-nowrap w-full flex flex-col items-start gap-19">
         <h1
           ref={lineRef}
-          className="whitespace-nowrap inline-block  leading-18 md:mt-[43.5px] mt-[12%]"
+          className="whitespace-nowrap inline-block  leading-18 md:mt-22 mt-22.5"
         >
           SHILE
         </h1>
@@ -30,9 +30,10 @@ const Footer = () => {
         </h1>
       </section>
 
-      <section className="grow mt-[10%]">
+      <section className="grow md:mt-[10%] mt-[20%]">
         <p>WORK</p>
         <p>SERVICES</p>
+        <p>DIGITAL CRAFT</p>
         <p>ABOUT</p>
         <p>CONNECT</p>
         <p></p>
