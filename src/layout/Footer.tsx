@@ -30,7 +30,7 @@ const Footer = () => {
         </h1>
       </section>
 
-      <section className="grow md:mt-[10%] mt-[20%]">
+      <section className="grow md:mt-[10%] mt-[20%] mb-[5%]">
         <p>WORK</p>
         <p>SERVICES</p>
         <p>DIGITAL CRAFT</p>

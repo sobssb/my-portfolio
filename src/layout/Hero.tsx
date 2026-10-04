@@ -28,10 +28,10 @@ const Hero = () => {
         autoSplit: true,
         onSplit: (self) => {
           return gsap.from(self.chars, {
-            y: 100,
+            y: 10,
             opacity: 0,
-            duration: 0.8,
-            stagger: 0.04,
+            duration: 1,
+            stagger: 0.05,
             ease: "power4",
           });
         },
@@ -65,8 +65,7 @@ const Hero = () => {
       <div className="flex  flex-col items-start justify-center w-full gap-3 md:mt-5 mt-3 relative z-10">
         <div className="md:max-w-150 md:ml-[20%] px-3 md:px-0 w-full mb-30">
           <h2 className="text-2xl">
-            FRONT-END DEVELOPER // CRAFTING THE ENGINES OF DIGITAL COMMERCE &
-            TECH SYSTEMS
+            Front-End Developer // Building Responsive Interface Web Experiences
           </h2>
           {/* <p className="">
             I build fast interactive interface with <span>React</span>,{" "}

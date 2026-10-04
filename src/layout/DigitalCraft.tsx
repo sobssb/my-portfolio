@@ -24,9 +24,7 @@ const DigitalCraft = () => {
           <div>
             <h2>FRONT-END DEVELOPMENT</h2>
             <p>
-              Responsive, component-driven interface built with react +
-              typeScript and tailwind css - structure to scale and enhance the
-              visual appeal and user interaction.
+              React, TypeScript, Tailwind CSS, reusable components, responsive layout and structural front-end architecture.
             </p>
           </div>
         </div>
@@ -38,8 +36,7 @@ const DigitalCraft = () => {
           <div>
             <h2>MARKETPLACE DEVELOPMENT</h2>
             <p>
-              Cart state logic, inventory filtering and e-commerce UI tuned for
-              real-world convertion.
+              Product interfaces, filtering, cart state, product discovery and e-commerce UI patterns.
             </p>
           </div>
         </div>
@@ -51,8 +48,7 @@ const DigitalCraft = () => {
           <div>
             <h2>SYSTEM VISUALIZATION</h2>
             <p>
-              Interface grids and flowcharts built for roadmaps and live data
-              representation.
+              Dashboards, information-heavy interfaces, grid, tables and visual representation of structured data.
             </p>
           </div>
         </div>
@@ -64,36 +60,31 @@ const DigitalCraft = () => {
           <div>
             <h2>HIGH-END PROTOTYPING</h2>
             <p>
-              Fully functional prototypes that simulate real performance before
-              a single line ships.
+              Turning concepts and designs into functional interfaces that demonstrate product ideas and user flows.
             </p>
           </div>
         </div>
 
         <div>
           <div>
-            <span>05</span> // Review
+            <span>05</span> // Code
           </div>
           <div>
-            <h2>CODE REVIEW, REFACTORING</h2>
+            <h2>CLEAN CODE & REFACTORING</h2>
             <p>
-              Elevate projects through precise code reviews, strategic
-              refactoring ensuring top-tier code quality and cohensive frontend
-              implementation.
+              Resuable components, organized project structure, refactoring and improving maintainability as project evolve.
             </p>
           </div>
         </div>
 
         <div>
           <div>
-            <span>06</span> // Website Motions
+            <span>06</span> // Motion
           </div>
           <div>
-            <h2>INTERACTIVE WEBSITE MOTIONS</h2>
+            <h2>INTERACTIVE WEB MOTIONS</h2>
             <p>
-              Enhance websites with captivating motions using cutting-edge
-              technology like GSAP with lenis, incorporating dynamic and
-              interactive elements to boost user engagement.
+              Exploring GSAP and smooth-scrollig technique to create purposeful animations and interactive experience.
             </p>
           </div>
         </div>

@@ -23,13 +23,13 @@ const Work = () => {
           <div className="w-full h-40 bg-red-900"></div>
           <div>
             <div>
-              <h2>this it the name of the project</h2>
-              <p>short detail of the project</p>
+              <h2>Swap & Shop</h2>
+              <p>A responsive marketplace interface where users can browse, search and explore products across different categories. Built to practice real-world e-commerce UI patterns, product filtering, navigation and reusable React components</p>
             </div>
 
             <div>
-              <h3>tech stack</h3>
-              <p>the tech stack</p>
+              <h3>Tech Stack</h3>
+              <p>React . TypeScript . Tailwind CSS . Vite</p>
             </div>
 
             <div>

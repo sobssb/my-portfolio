@@ -22,50 +22,45 @@ const Services = () => {
         <div>
           <div>(1)</div>
           <div>
-            <h2>Strategy</h2>
+            <h2>Web Design & Implementation</h2>
             <p>
-              Clear, actionable plans to align business vison with long-term
-              goals and measurable success.
+              Turning designs and ideas into responsive, functional websites with attention to layout, usability and visual detail.
             </p>
           </div>
         </div>
         <div>
           <div>(2)</div>
           <div>
-            <h2>Brand Identity</h2>
+            <h2>Front-End Development</h2>
             <p>
-              Memorable designs that capture the essence of your brand and
-              connect with your audience.
+              Building responsive interfaces with React, TypeScript and tailwind CSS using reusable components and organised code.
             </p>
           </div>
         </div>
         <div>
           <div>(3)</div>
           <div>
-            <h2>Web Design</h2>
+            <h2>Interactive Websites</h2>
             <p>
-              Beautiful, user-friendly websites that create seamless experience
-              and elevate your business.
+              Adding purposeful animations and interactions to make websites feel more engaging and responsive.
             </p>
           </div>
         </div>
         <div>
           <div>(4)</div>
           <div>
-            <h2>Web Development</h2>
+            <h2>Marketplace Interfaces</h2>
             <p>
-              React + typeScript website with gsap and lenis to grow your
-              business and perform at the highest level.
+             Creating product-focused interfaces with browsing, filtering, cart interactions and other e-commerce pattern.
             </p>
           </div>
         </div>
         <div>
           <div>(5)</div>
           <div>
-            <h2>Web Apps</h2>
+            <h2>Website Improvements</h2>
             <p>
-              Custom applications tailored to streamline operations and enhance
-              user engagement.
+              Improving existing fron-end interfaces through responsive fixes, component refactoring, UI improvements and cleaner implementation.
             </p>
           </div>
         </div>
