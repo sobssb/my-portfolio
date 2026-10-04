@@ -125,8 +125,13 @@ const About = () => {
             </p>
 
             <p className="mt-5 ">
-              <strong>2025-Front-End Development Program</strong><br /> <span className="mb-5 inline-block"></span>
-              Built a foundation in CorelDraw, Photoshop, layout, colour and visual composition.
+              <strong>2025-Front-End Development Program / SIWES</strong><br /> <span className="mb-5 inline-block"></span>
+              Gained pratical exposure to web development through SIWES and continues developing my front-end skiils.
+            </p>
+
+            <p className="mt-5 ">
+              <strong>2026-React, Tailwind CSS & TypeScript</strong><br /> <span className="mb-5 inline-block"></span>
+              Expanded my front-end development skills by learning React, Tailwind CSS and TypeScript and applying them to personal projects.
             </p>
           </div>
 
