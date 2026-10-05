@@ -13,7 +13,7 @@ const Footer = () => {
 
   const date = new Date().getFullYear();
   return (
-    <footer className="relative z-300 text-white min-h-screen px-3 flex flex-col items-start">
+    <footer className="relative z-300 text-white px-3 flex flex-col items-start border-t-[0.1px] border-[rgba(243,237,227,0.1)]">
       {/* Name of developer */}
       <section ref={nameRef} className="whitespace-nowrap w-full flex flex-col items-start gap-19">
         <h1
@@ -30,7 +30,7 @@ const Footer = () => {
         </h1>
       </section>
 
-      <section className="grow md:mt-[10%] mt-[20%] mb-[5%]">
+      <section className="grow md:mt-[10%] mt-20">
         <p>WORK</p>
         <p>SERVICES</p>
         <p>DIGITAL CRAFT</p>
@@ -39,11 +39,11 @@ const Footer = () => {
         <p></p>
       </section>
 
-      <section className="grow">
+      <section className="grow mt-20">
         <Link to="/">OLUWASHILESHITTU@GMAIL.COM </Link>
       </section>
 
-      <section className="mb-8 flex flex-row justify-between items-center w-full gap-2">
+      <section className="mb-8 flex flex-row justify-between items-center w-full gap-2 mt-20">
         <div>&copy;SOB {date}</div>
       
 

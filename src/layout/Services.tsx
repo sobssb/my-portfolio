@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import useElementSize from "../hooks/useElementSize";
+import { ServiceContent } from "../content/ServiceContent";
 
 const Services = () => {
+  const { serviceList } = ServiceContent();
   const lineRef = useRef(null);
 
   const nameRef = useElementSize<HTMLDivElement>({
@@ -10,7 +12,7 @@ const Services = () => {
     measureRef: lineRef,
   });
   return (
-    <section className="relative z-300 text-white min-h-screen">
+    <section id="services" className="relative z-300 text-white min-h-screen scroll-mt-10">
       {/* Name of developer */}
       <div ref={nameRef} className="whitespace-nowrap w-full px-3">
         <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
@@ -18,52 +20,23 @@ const Services = () => {
         </h1>
       </div>
 
-      <div className="px-3">
-        <div>
-          <div>(1)</div>
-          <div>
-            <h2>Web Design & Implementation</h2>
-            <p>
-              Turning designs and ideas into responsive, functional websites with attention to layout, usability and visual detail.
+      <div>
+        {serviceList.map((list) => (
+          <div
+            key={list.number}
+            className="relative grid grid-cols-[20%_minmax(0,1fr)] md:grid-cols-[20%_40%_40%] gap-y-3 border-y-[0.1px] mb-10 last:mb-0 border-[rgba(243,237,227,0.1)] py-5"
+          >
+            <span className="absolute left-3 top-5">({list.number})</span>
+
+            <h2 className="col-start-2 min-w-0">
+              <strong>{list.title}</strong>
+            </h2>
+
+            <p className="col-start-2 min-w-0 md:max-w-65 md:col-start-3 mr-3">
+              {list.text}
             </p>
           </div>
-        </div>
-        <div>
-          <div>(2)</div>
-          <div>
-            <h2>Front-End Development</h2>
-            <p>
-              Building responsive interfaces with React, TypeScript and tailwind CSS using reusable components and organised code.
-            </p>
-          </div>
-        </div>
-        <div>
-          <div>(3)</div>
-          <div>
-            <h2>Interactive Websites</h2>
-            <p>
-              Adding purposeful animations and interactions to make websites feel more engaging and responsive.
-            </p>
-          </div>
-        </div>
-        <div>
-          <div>(4)</div>
-          <div>
-            <h2>Marketplace Interfaces</h2>
-            <p>
-             Creating product-focused interfaces with browsing, filtering, cart interactions and other e-commerce pattern.
-            </p>
-          </div>
-        </div>
-        <div>
-          <div>(5)</div>
-          <div>
-            <h2>Website Improvements</h2>
-            <p>
-              Improving existing fron-end interfaces through responsive fixes, component refactoring, UI improvements and cleaner implementation.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

@@ -1,7 +1,9 @@
 import { useRef } from "react";
 import useElementSize from "../hooks/useElementSize";
+import { DigitalContent } from "../content/DigitalContent";
 
 const DigitalCraft = () => {
+  const { digitalList } = DigitalContent();
   const lineRef = useRef(null);
 
   const nameRef = useElementSize<HTMLDivElement>({
@@ -10,84 +12,32 @@ const DigitalCraft = () => {
     measureRef: lineRef,
   });
   return (
-    <section className="relative z-300 text-white min-h-screen">
-      <div ref={nameRef} className="whitespace-nowrap w-full  relative px-3">
-        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">Digital Craft
+    <section id="digital" className="relative z-300 text-white min-h-screen flex flex-col scroll-mt-10">
+      <div ref={nameRef} className="whitespace-nowrap w-full  relative px-3 ">
+        <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
+          Digital Craft
         </h1>
       </div>
 
-      <div>
-        <div>
-          <div>
-            <span>01</span> // Engineering
-          </div>
-          <div>
-            <h2>FRONT-END DEVELOPMENT</h2>
-            <p>
-              React, TypeScript, Tailwind CSS, reusable components, responsive layout and structural front-end architecture.
-            </p>
-          </div>
-        </div>
+      <div className="px-3 flex flex-row gap-5 overflow-x-scroll no-scroll my-auto h-full [&::webkit-scrollbar]:hidden scrollbar-none ">
+        {digitalList.map((list, i) => (
+          <div
+            className=" grow border-[0.1px] border-[rgba(243,237,227,0.1)] py-10 px-5 min-w-85 min-h-110  relative "
+            key={i}
+          >
+            <span className="text-9xl text-transparent [-webkit-text-stroke:0.4px_#ff3d1f] absolute right-0 -top-6 ">
+              {list.number}
+            </span>
 
-        <div>
-          <div>
-            <span>02</span> // Commerce
+            <div className="mt-25 mb-6 text-[20px]">
+              <span>{list.number}</span> {list.subTitle}
+            </div>
+            <div>
+              <h2 className="text-3xl mb-5">{list.title}</h2>
+              <p className="text-[16px]">{list.text}</p>
+            </div>
           </div>
-          <div>
-            <h2>MARKETPLACE DEVELOPMENT</h2>
-            <p>
-              Product interfaces, filtering, cart state, product discovery and e-commerce UI patterns.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span>03</span> // Data
-          </div>
-          <div>
-            <h2>SYSTEM VISUALIZATION</h2>
-            <p>
-              Dashboards, information-heavy interfaces, grid, tables and visual representation of structured data.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span>04</span> // Prototyping
-          </div>
-          <div>
-            <h2>HIGH-END PROTOTYPING</h2>
-            <p>
-              Turning concepts and designs into functional interfaces that demonstrate product ideas and user flows.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span>05</span> // Code
-          </div>
-          <div>
-            <h2>CLEAN CODE & REFACTORING</h2>
-            <p>
-              Resuable components, organized project structure, refactoring and improving maintainability as project evolve.
-            </p>
-          </div>
-        </div>
-
-        <div>
-          <div>
-            <span>06</span> // Motion
-          </div>
-          <div>
-            <h2>INTERACTIVE WEB MOTIONS</h2>
-            <p>
-              Exploring GSAP and smooth-scrollig technique to create purposeful animations and interactive experience.
-            </p>
-          </div>
-        </div>
+        ))}
       </div>
     </section>
   );

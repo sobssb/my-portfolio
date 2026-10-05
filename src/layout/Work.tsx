@@ -10,7 +10,10 @@ const Work = () => {
     measureRef: lineRef,
   });
   return (
-    <section className="relative z-300 bg-white min-h-screen text-black">
+    <section
+      id="work"
+      className="relative z-300 bg-white min-h-screen text-black scroll-mt-10"
+    >
       {/* Name of developer */}
       <div ref={nameRef} className="whitespace-nowrap w-full px-3 ">
         <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
@@ -24,7 +27,12 @@ const Work = () => {
           <div>
             <div>
               <h2>Swap & Shop</h2>
-              <p>A responsive marketplace interface where users can browse, search and explore products across different categories. Built to practice real-world e-commerce UI patterns, product filtering, navigation and reusable React components</p>
+              <p>
+                A responsive marketplace interface where users can browse,
+                search and explore products across different categories. Built
+                to practice real-world e-commerce UI patterns, product
+                filtering, navigation and reusable React components
+              </p>
             </div>
 
             <div>

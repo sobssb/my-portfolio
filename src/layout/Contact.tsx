@@ -1,5 +1,6 @@
 import { useRef } from "react";
 import useElementSize from "../hooks/useElementSize";
+import { Link } from "react-router";
 
 const Contact = () => {
   const lineRef = useRef(null);
@@ -9,8 +10,9 @@ const Contact = () => {
     maxSize: 500,
     measureRef: lineRef,
   });
+
   return (
-    <section className="relative z-300 text-white min-h-screen flex flex-col">
+    <section id="contact" className="scroll-mt-10 relative z-300 text-white min-h-screen flex flex-col">
       {/* Name of developer */}
       <div ref={nameRef} className="whitespace-nowrap w-full px-3 relative">
         <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">
@@ -25,11 +27,16 @@ const Contact = () => {
         <p>LET'S CHAT</p>
       </div>
 
-      <div className="grow  text-center w-full flex">
-        <button className="w-[60%] py-4 bg-[#ff3d1f] text-white text-center rounded-2xl m-auto h-full">
-          Connect
-        </button>
+      {/* <Link to={}> */}
+      <div className="text-center  flex my-10 w-[60%] grow m-auto">
+        <Link
+          to={"mailto:oluwashileshittu@gmail.com"}
+          className=" py-10 h-fit bg-[#ff3d1f] text-white text-center rounded-full m-auto whitespace-nowrap cursor-pointer w-full lg:text-9xl md:text-7xl text-5xl"
+        >
+          LET'S TALK
+        </Link>
       </div>
+      {/* </Link> */}
     </section>
   );
 };

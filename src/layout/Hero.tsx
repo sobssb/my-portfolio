@@ -57,12 +57,12 @@ const Hero = () => {
       </div>
 
       {/* image of developer inform of icon */}
-      <div className="w-50 mx-auto  relative z-20 -mt-25">
-        <img className="h-fiit" src={image} alt="icon" />
+      <div className="w-55 m-auto  relative z-20">
+        <img  src={image} alt="icon" />
       </div>
 
       {/* Short details about the developer */}
-      <div className="flex  flex-col items-start justify-center w-full gap-3 md:mt-5 mt-3 relative z-10">
+      <div className="flex  flex-col items-start justify-center w-full gap-3 mt-5 relative z-10">
         <div className="md:max-w-150 md:ml-[20%] px-3 md:px-0 w-full mb-30">
           <h2 className="text-2xl">
             Front-End Developer // Building Responsive Interface Web Experiences
