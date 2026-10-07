@@ -52,30 +52,41 @@ const About = () => {
           {aboutList.map((list, i) => (
             <div
               key={i}
-              className={`mt-10 ${i === 0 ? "md:ml-[40%] mt-30 md:mr-[20%]" : i === 1 ? "mt-30 md:mr-[20%] md:ml-[40%]" : "mt-30 md:ml-[20%] md:mr-[40%]"} `}
+              className="mt-30 grid grid-cols-1 gap-y-3 md:grid-cols-5 md:gap-y-0"
             >
-              <h3>{list.subTitle}</h3>
-              <h2 className="text-3xl mr-[20%]">
-                {list.title}
-                <span className="text-[#ff3d1f]"> {list.titleSpan}</span>
-              </h2>
+              <h3
+                className={`text-xs font-semibold tracking-[0.08em] text-[rgba(243,237,227,0.65)] md:col-start-1 md:row-start-1 ${i < 2 ? "md:justify-self-end md:text-right" : "pl-3"}`}
+              >
+                {list.subTitle}
+              </h3>
+              <div
+                className={`min-w-0 md:row-start-1 ${i < 2 ? "md:col-start-3 md:col-span-2" : "md:col-start-2 md:col-span-2"}`}
+              >
+                <h2 className="mb-0 text-2xl leading-[1.12] md:text-4xl">
+                  {list.title}
+                  <span className="text-[#ff3d1f]"> {list.titleSpan}</span>
+                </h2>
 
-              {list.text?.map((info, i) => (
-                <p
-                  key={i}
-                  className={`mt-5 ${i === 0 ? " md:mr-[40%]" : i === 1 ? " md:mr-[40%] " : " md:mr-[40%]"} `}
-                >
-                  {info}
-                </p>
-              ))}
+                {list.text?.map((info, i) => (
+                  <p
+                    key={i}
+                    className="mt-5 text-sm leading-[1.7] text-[rgba(243,237,227,0.78)] md:text-[0.95rem]"
+                  >
+                    {info}
+                  </p>
+                ))}
 
-              {list.journey?.map((info, i) => (
-                <p key={i} className="mt-5 ">
-                  <strong>{info.strong} </strong> <br />{" "}
-                  <span className="mb-5 inline-block"></span>
-                  {info.text}
-                </p>
-              ))}
+                {list.journey?.map((info, i) => (
+                  <p
+                    key={i}
+                    className="mt-5 text-sm leading-[1.7] text-[rgba(243,237,227,0.78)] md:text-[0.95rem]"
+                  >
+                    <strong>{info.strong}</strong>
+                    <br />
+                    {info.text}
+                  </p>
+                ))}
+              </div>
             </div>
           ))}
 

@@ -58,7 +58,7 @@ const Hero = () => {
 
       {/* image of developer inform of icon */}
       <div className="w-55 m-auto  relative z-20">
-        <img  src={image} alt="icon" />
+        <img src={image} alt="icon" />
       </div>
 
       {/* Short details about the developer */}

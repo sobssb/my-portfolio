@@ -15,7 +15,7 @@ const Nav = () => {
         if (!isMenuOpen) return;
         setIsMenuOpen(false);
       }}
-      className="px-3 py-3 md:py-3 flex flex-col items-start fixed top-0 nav z-500 w-full"
+      className="fixed top-0 z-500 flex w-full flex-col items-start bg-black/50 px-3 py-3 backdrop-blur-md backdrop-saturate-140 md:py-3"
     >
       <div className="flex flex-row justify-between items-center w-full">
         <div
@@ -43,7 +43,7 @@ const Nav = () => {
             {navList.map((list, i) => (
               <a
                 key={i}
-                className="relative after:absolute after:left-0 after:-bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+                className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
                 href={list.navigate}
               >
                 {list.text}
@@ -54,11 +54,11 @@ const Nav = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="flex md:hidden flex-col gap-3 justify-between items-start mt-3">
+        <div className="flex md:hidden flex-col  justify-between items-start mt-3">
           {navList.map((list, i) => (
             <a
               key={i}
-              className="relative after:absolute after:left-0 after:-bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+              className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
               href={list.navigate}
             >
               {list.text}

@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import { Link } from "react-router";
+import { NavLinkContent } from "../content/NavLinkContent";
 import useElementSize from "../hooks/useElementSize";
 
 const Footer = () => {
+  const { navList } = NavLinkContent();
   const lineRef = useRef(null);
 
   const nameRef = useElementSize<HTMLDivElement>({
@@ -17,30 +19,38 @@ const Footer = () => {
       {/* Name of developer */}
       <section
         ref={nameRef}
-        className="whitespace-nowrap w-full flex flex-col items-start gap-19"
+        className="whitespace-nowrap w-full flex flex-col items-start gap-2"
       >
         <h1
           ref={lineRef}
-          className="whitespace-nowrap inline-block  leading-18 md:mt-22 mt-22.5"
+          className="whitespace-nowrap inline-block  leading-0 md:mt-22 mt-22.5"
         >
           SHILE
         </h1>
-        <h1 ref={lineRef} className="whitespace-nowrap inline-block">
+        <h1 ref={lineRef} className="whitespace-nowrap inline-block -mt-6">
           SHITTU
         </h1>
       </section>
 
       <section className="grow md:mt-[10%] mt-20">
-        <p>WORK</p>
-        <p>SERVICES</p>
-        <p>DIGITAL CRAFT</p>
-        <p>ABOUT</p>
-        <p>CONNECT</p>
-        <p></p>
+        <div className="flex flex-col  items-start mt-3">
+          {navList.map((list, i) => (
+            <a
+              key={i}
+              className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+              href={list.navigate}
+            >
+              {list.text}
+            </a>
+          ))}
+        </div>
       </section>
 
       <section className="grow mt-20">
-        <Link to={"mailto:oluwashileshittu@gmail.com"}>
+        <Link
+          to={"mailto:oluwashileshittu@gmail.com"}
+          className="relative after:absolute after:left-0 after:-bottom-2 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+        >
           OLUWASHILESHITTU@GMAIL.COM{" "}
         </Link>
       </section>
@@ -52,9 +62,26 @@ const Footer = () => {
           className="
       flex flex-row justify-between items-center gap-2"
         >
-          <Link to="/">Linkedin</Link>
-          <Link to="/">WhatsApp</Link>
-          <Link to="/">09067233240</Link>
+          <Link
+            className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+            to="/"
+          >
+            Linkedin
+          </Link>
+          <a
+            className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+            href="https://wa.me/2349067233240"
+            target="_blank"
+            rel="noreferrer"
+          >
+            WhatsApp
+          </a>
+          <a
+            className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+            href="tel:+2349067233240"
+          >
+            09067233240
+          </a>
         </div>
       </section>
     </footer>
