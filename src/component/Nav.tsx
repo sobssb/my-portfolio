@@ -18,7 +18,10 @@ const Nav = () => {
       className="px-3 py-3 md:py-3 flex flex-col items-start fixed top-0 nav z-500 w-full"
     >
       <div className="flex flex-row justify-between items-center w-full">
-        <div className="max-w-10 lg:mr-50 md:mr-40 mr-5">
+        <div
+          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+          className="max-w-10 lg:mr-50 md:mr-40 mr-5"
+        >
           <img src={logo} alt="logo image" aria-label="logo" />
         </div>
         <div className="md:grow">
@@ -51,7 +54,7 @@ const Nav = () => {
       </div>
 
       {isMenuOpen && (
-        <div className="hidden md:flex md:flex-row gap-3 justify-between items-center">
+        <div className="flex md:hidden flex-col gap-3 justify-between items-start mt-3">
           {navList.map((list, i) => (
             <a
               key={i}

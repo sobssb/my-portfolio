@@ -5,10 +5,10 @@ const Layout = () => {
     <div className="bg-black text-white min-h-screen ">
       <div className="pointer-events-none fixed inset-0 z-0">
         <div className="absolute inset-y-0 left-0 right-0">
-          <div className="absolute inset-y-0 left-[20%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
-          <div className="absolute inset-y-0 left-[40%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
-          <div className="absolute inset-y-0 left-[60%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
-          <div className="absolute inset-y-0 left-[80%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
+          <div className="grid-line absolute inset-y-0 left-[20%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
+          <div className="grid-line absolute inset-y-0 left-[40%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
+          <div className="grid-line absolute inset-y-0 left-[60%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
+          <div className="grid-line absolute inset-y-0 left-[80%] w-[0.1px] bg-[rgba(243,237,227,0.1)]" />
         </div>
       </div>
 
