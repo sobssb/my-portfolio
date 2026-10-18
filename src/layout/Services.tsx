@@ -28,11 +28,11 @@ const Services = () => {
           >
             <span className="absolute left-3 top-5">({list.number})</span>
 
-            <h2 className="col-start-2 min-w-0">
+            <h2 className="col-start-2 min-w-0 text-[18px] span">
               <strong>{list.title}</strong>
             </h2>
 
-            <p className="col-start-2 min-w-0 md:max-w-65 md:col-start-3 mr-3">
+            <p className="col-start-2 min-w-0 md:max-w-65 md:col-start-3 mr-3 text-[16px]">
               {list.text}
             </p>
           </div>

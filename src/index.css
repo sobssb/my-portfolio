@@ -7,20 +7,23 @@ html {
 }
 
 body {
-  font-size: 13px;
+  font-size: 16px;
   font-family: "Inter", sans-serif;
   font-weight: 400;
 }
 
 h1 {
-  font-family: "Inter", sans-serif;
   font-weight: 900;
   line-height: 0.95;
 }
 
 h2 {
-  font-family: "Inter", sans-serif;
   font-weight: 500;
+}
+
+.span {
+  font-family: "Tangerine", serif;
+  text-shadow: 4px 4px 4px #242323;
 }
 
 @keyframes grid-line-shine {

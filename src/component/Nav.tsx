@@ -28,12 +28,12 @@ const Nav = () => {
           <div className="block md:hidden cursor-pointer">
             {isMenuOpen ? (
               <LiaTimesCircle
-                className="text-[20px]"
+                className="text-[30px]"
                 onClick={() => setIsMenuOpen(false)}
               />
             ) : (
               <TbMenu
-                className="text-[20px]"
+                className="text-[30px]"
                 onClick={() => setIsMenuOpen(true)}
               />
             )}
@@ -43,7 +43,7 @@ const Nav = () => {
             {navList.map((list, i) => (
               <a
                 key={i}
-                className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+                className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 text-[15px] font-bold"
                 href={list.navigate}
               >
                 {list.text}
@@ -58,7 +58,7 @@ const Nav = () => {
           {navList.map((list, i) => (
             <a
               key={i}
-              className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+              className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 text-[20px] font-bold"
               href={list.navigate}
             >
               {list.text}

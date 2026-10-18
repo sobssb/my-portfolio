@@ -49,7 +49,7 @@ const Footer = () => {
       <section className="grow mt-20">
         <Link
           to={"mailto:oluwashileshittu@gmail.com"}
-          className="relative after:absolute after:left-0 after:-bottom-2 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+          className="relative after:absolute after:left-0 after:-bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
         >
           OLUWASHILESHITTU@GMAIL.COM{" "}
         </Link>

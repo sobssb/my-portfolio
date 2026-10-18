@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import useElementSize from "../hooks/useElementSize";
 import background from "../assets/IMG-20260714-WA0004.jpg";
-import image from "../assets/92e59c6cdbf5b944246f8595e7b5646b.jpg";
+// import image from "../assets/92e59c6cdbf5b944246f8595e7b5646b.jpg";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import SplitText from "gsap/src/SplitText";
@@ -49,7 +49,7 @@ const Hero = () => {
       {/* Name of developer */}
       <div
         ref={nameRef}
-        className="whitespace-nowrap w-full px-3 relative z-100 py-0 my-0 mt-11 md:mt-5"
+        className="whitespace-nowrap w-full px-3 relative z-100 py-0 my-0 mt-11 md:mt-5 grow"
       >
         <h1 ref={lineRef} className="whitespace-nowrap inline-block">
           SHITTU OLUWA<span className="text-[#ff3d1f]">SHILE</span>.B
@@ -57,22 +57,16 @@ const Hero = () => {
       </div>
 
       {/* image of developer inform of icon */}
-      <div className="w-55 m-auto  relative z-20">
+      {/* <div className="w-55 m-auto  relative z-20">
         <img src={image} alt="icon" />
-      </div>
+      </div> */}
 
       {/* Short details about the developer */}
-      <div className="flex  flex-col items-start justify-center w-full gap-3 mt-5 relative z-10">
-        <div className="md:max-w-150 md:ml-[20%] px-3 md:px-0 w-full mb-30">
-          <h2 className="text-2xl">
+      <div className="flex  flex-col items-start justify-center w-full gap-3 mt-5 relative z-10 ">
+        <div className="md:max-w-150 md:ml-[20%] px-3 md:px-0 w-full mb-30 ">
+          <h2 className="text-3xl font-bold">
             Front-End Developer // Building Responsive Interface Web Experiences
           </h2>
-          {/* <p className="">
-            I build fast interactive interface with <span>React</span>,{" "}
-            <span>GSAP</span> and <span>Lenis</span> turning static design into
-            experences people remember. Currently open to freelance and
-            full-time roles{" "}
-          </p> */}
         </div>
       </div>
 
