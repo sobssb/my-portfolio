@@ -1,9 +1,11 @@
 import { useRef } from "react";
 import useElementSize from "../hooks/useElementSize";
+import { useH1Scroll } from "../hooks/useH1Scroll";
 import { FiArrowUpRight } from "react-icons/fi";
 
 const Contact = () => {
   const lineRef = useRef(null);
+  const container = useRef<HTMLDivElement>(undefined as any);
 
   const nameRef = useElementSize<HTMLDivElement>({
     minSize: 24,
@@ -11,8 +13,11 @@ const Contact = () => {
     measureRef: lineRef,
   });
 
+  useH1Scroll(container, lineRef);
+
   return (
     <section
+      ref={container}
       id="contact"
       className="scroll-mt-10 relative z-300 text-white min-h-screen flex flex-col"
     >

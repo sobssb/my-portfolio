@@ -2,26 +2,33 @@ import { useRef } from "react";
 import useElementSize from "../hooks/useElementSize";
 import image from "../assets/92e59c6cdbf5b944246f8595e7b5646b.jpg";
 import { AboutContent } from "../content/AboutContent";
+import { useH1Scroll } from "../hooks/useH1Scroll";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import Draggable from "gsap/Draggable";
+import SplitText from "gsap/src/SplitText";
 
+import { ScrollTrigger } from "gsap/all";
 // icon
 import { MdOutlineFileDownload } from "react-icons/md";
 
-gsap.registerPlugin(useGSAP, Draggable);
+gsap.registerPlugin(useGSAP, Draggable, SplitText, ScrollTrigger);
 
 const About = () => {
   const { aboutList } = AboutContent();
   const lineRef = useRef(null);
-  const container = useRef<HTMLElement>(undefined as any);
+  const container = useRef<HTMLDivElement>(undefined as any);
   const imageDrag = useRef<HTMLImageElement>(undefined as any);
+
+  const textRef = useRef(null);
 
   const nameRef = useElementSize<HTMLDivElement>({
     minSize: 24,
     maxSize: 500,
     measureRef: lineRef,
   });
+
+  useH1Scroll(container, lineRef);
 
   useGSAP(
     () => {
@@ -30,6 +37,30 @@ const About = () => {
         type: "x,y",
         bounds: container.current,
         inertia: true,
+      });
+
+      if (!textRef.current) return;
+
+      SplitText.create(textRef.current, {
+        type: "lines",
+        autoSplit: true,
+        onSplit: (self) => {
+          return gsap.from(self.lines, {
+            y: 10,
+            opacity: 0,
+            duration: 1,
+            stagger: 0.05,
+            ease: "power4",
+          });
+        },
+      });
+
+      gsap.to(".arrow", {
+        y: 5,
+        repeat: -1,
+        duration: 1,
+        yoyo: true,
+        ease: "linear",
       });
     },
     { scope: container },
@@ -67,18 +98,31 @@ const About = () => {
               >
                 <h2 className="mb-0 text-3xl leading-[1.12] ">
                   {list.title}
-                  <span className="text-[#ff3d1f] span"> {list.titleSpan}</span>
+                  <span className="span text-[whitesmoke]">
+                    {" "}
+                    {list.titleSpan}
+                  </span>
                 </h2>
 
                 {list.text?.map((info, i) => (
-                  <p key={i} className="mt-5 text-[16px] leading-[1.3] ">
+                  <p
+                    ref={textRef}
+                    key={i}
+                    className="mt-5 text-[19.5px] leading-[1.2] "
+                  >
                     {info}
                   </p>
                 ))}
 
                 {list.journey?.map((info, i) => (
-                  <p key={i} className="mt-5 text-[16px] leading-[1.3] ">
-                    <strong>{info.strong}</strong>
+                  <p
+                    ref={textRef}
+                    key={i}
+                    className="mt-5 text-[19.5px] leading-[1.2] "
+                  >
+                    <span className="span text-[whitesmoke]">
+                      <strong>{info.strong}</strong>
+                    </span>
                     <br />
                     {info.text}
                   </p>
@@ -95,7 +139,7 @@ const About = () => {
               <span>Download Resume</span>
               <MdOutlineFileDownload
                 aria-hidden="true"
-                className="h-[0.72em] w-[0.72em] shrink-0"
+                className="h-[0.72em] w-[0.72em] shrink-0 arrow"
               />
             </a>
           </div>

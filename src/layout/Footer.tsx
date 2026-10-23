@@ -2,10 +2,17 @@ import { useRef } from "react";
 import { Link } from "react-router";
 import { NavLinkContent } from "../content/NavLinkContent";
 import useElementSize from "../hooks/useElementSize";
+import gsap from "gsap";
+import { useGSAP } from "@gsap/react";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 const Footer = () => {
   const { navList } = NavLinkContent();
   const lineRef = useRef(null);
+  const container = useRef<HTMLDivElement>(undefined as any);
+  const footlink = useRef<HTMLDivElement>(undefined as any);
 
   const nameRef = useElementSize<HTMLDivElement>({
     minSize: 24,
@@ -14,8 +21,45 @@ const Footer = () => {
   });
 
   const date = new Date().getFullYear();
+
+  useGSAP(
+    () => {
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: lineRef.current,
+          start: "top 90%",
+          end: "bottom top",
+          // markers: true,
+          scrub: true,
+        },
+      });
+
+      tl.from("h1", {
+        x: "-100",
+        opacity: 0,
+        stagger: 0.05,
+        ease: "power4",
+      })
+        .from(".navlink", {
+          y: "-100",
+          opacity: 0,
+          stagger: 0.05,
+          ease: "power4",
+        })
+        .from(footlink.current, {
+          y: "200",
+          opacity: 0,
+          stagger: 0.05,
+          ease: "power4",
+        });
+    },
+    { scope: container },
+  );
   return (
-    <footer className="relative z-300 text-white px-3 flex flex-col items-start border-t-[0.1px] border-[rgba(243,237,227,0.1)]">
+    <footer
+      ref={container}
+      className="relative z-300 text-white px-3 flex flex-col items-start border-t-[0.1px] border-[rgba(243,237,227,0.1)]"
+    >
       {/* Name of developer */}
       <section
         ref={nameRef}
@@ -37,7 +81,7 @@ const Footer = () => {
           {navList.map((list, i) => (
             <a
               key={i}
-              className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
+              className="navlink relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100"
               href={list.navigate}
             >
               {list.text}
@@ -55,7 +99,10 @@ const Footer = () => {
         </Link>
       </section>
 
-      <section className="mb-8 flex flex-row justify-between items-center w-full gap-2 mt-20">
+      <section
+        ref={footlink}
+        className="mb-8 flex flex-row justify-between items-center w-full gap-2 mt-20"
+      >
         <div>&copy;SOB {date}</div>
 
         <div
