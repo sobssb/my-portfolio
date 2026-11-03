@@ -11,13 +11,14 @@ export const useH1Scroll = (
 ) => {
   useGSAP(
     () => {
+      const tl = gsap.timeline();
       if (!lineRef.current) return;
 
       SplitText.create(lineRef.current, {
         type: "chars",
         autoSplit: true,
         onSplit: (self) => {
-          return gsap.from(self.chars, {
+          return tl.from(self.chars, {
             scrollTrigger: {
               trigger: lineRef.current,
               start: "bottom 90%",

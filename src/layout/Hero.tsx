@@ -20,50 +20,57 @@ const Hero = () => {
 
   useGSAP(
     () => {
+      const tl = gsap.timeline({
+        defaults: {
+          opacity: 0,
+          ease: "power4",
+          duration: 1,
+          stagger: 0.05,
+        },
+      });
       if (!lineRef.current) return;
 
       SplitText.create(lineRef.current, {
         type: "chars",
         autoSplit: true,
         onSplit: (self) => {
-          return gsap.from(self.chars, {
+          return tl.from(self.chars, {
             y: 10,
             opacity: 0,
-            delay: 1.5,
-            duration: 1,
-            stagger: 0.05,
+            // delay: 1.5,
+            // duration: 1,
+            // stagger: 0.05,
             ease: "power4",
           });
         },
+      });
+      tl.from(".background", {
+        yPercent: 100,
+        // delay: 2.3,
+        // duration: 1,
+        // opacity: 0,
       });
 
       SplitText.create(shortRef.current, {
         type: "lines",
         autoSplit: true,
         onSplit: (self) => {
-          return gsap.from(self.lines, {
+          return tl.from(self.lines, {
             y: 50,
-            opacity: 0,
-            delay: 2,
-            duration: 1,
-            stagger: 0.05,
+            // opacity: 0,
+            // delay: 2,
+            // duration: 1,
+            // stagger: 0.05,
             ease: "power4",
           });
         },
-      });
-
-      gsap.from(".background", {
-        yPercent: 100,
-        delay: 2.3,
-        duration: 1,
-        opacity: 0,
       });
 
       // return () => split.revert();
     },
     { scope: container },
   );
-  
+
   return (
     <section
       ref={container}
@@ -96,9 +103,9 @@ const Hero = () => {
       </div>
 
       {/* image background */}
-      <div className="w-full absolute left-0 h-100  -bottom-40  z-1 background">
+      <div className="w-full absolute left-0 -bottom-50  z-1 background">
         <img
-          className="block h-100 w-full"
+          className="block h-[70vh] w-full"
           src={background}
           alt="background"
           aria-label="background"

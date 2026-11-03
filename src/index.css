@@ -27,8 +27,13 @@ h2 {
   font-weight: normal;
 }
 
-.services:hover {
+.services:is(:hover, .is-active) {
+  padding-left: 0.75rem;
   background: linear-gradient(90deg, rgba(255, 61, 31, 0.06), transparent 60%);
+}
+
+.services:is(:hover, .is-active) h2 {
+  color: #ff3d1f;
 }
 
 @keyframes grid-line-shine {

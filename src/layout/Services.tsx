@@ -1,10 +1,11 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import useElementSize from "../hooks/useElementSize";
 import { ServiceContent } from "../content/ServiceContent";
 import { useH1Scroll } from "../hooks/useH1Scroll";
 
 const Services = () => {
   const { serviceList } = ServiceContent();
+  const [activeService, setActiveService] = useState<number | null>(null);
   const lineRef = useRef(null);
   const container = useRef<HTMLDivElement>(undefined as any);
 
@@ -32,7 +33,25 @@ const Services = () => {
         {serviceList.map((list) => (
           <div
             key={list.number}
-            className="group transition-[padding] duration-400 ease-out hover:pl-3 services relative grid grid-cols-[20%_minmax(0,1fr)] md:grid-cols-[20%_40%_40%] gap-y-3 border-y-[0.1px] mb-10 last:mb-0 border-[rgba(243,237,227,0.1)] py-5"
+            role="button"
+            tabIndex={0}
+            aria-pressed={activeService === list.number}
+            onClick={() =>
+              setActiveService(
+                activeService === list.number ? null : list.number,
+              )
+            }
+            onKeyDown={(event) => {
+              if (event.key === "Enter" || event.key === " ") {
+                event.preventDefault();
+                setActiveService(
+                  activeService === list.number ? null : list.number,
+                );
+              }
+            }}
+            className={`group transition-[padding] duration-400 ease-out services relative grid grid-cols-[20%_minmax(0,1fr)] md:grid-cols-[20%_40%_40%] gap-y-3 border-y-[0.1px] mb-10 last:mb-0 border-[rgba(243,237,227,0.1)] py-5 ${
+              activeService === list.number ? "is-active pl-3" : "hover:pl-3"
+            }`}
           >
             <span className="absolute left-3 top-5">({list.number})</span>
 

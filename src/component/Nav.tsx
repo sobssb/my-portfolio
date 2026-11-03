@@ -11,6 +11,7 @@ gsap.registerPlugin(useGSAP);
 
 const Nav = () => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
+  const [selectedNav, setSelectedNav] = useState<string | null>(null);
 
   const { navList } = NavLinkContent();
 
@@ -81,8 +82,13 @@ const Nav = () => {
             {navList.map((list, i) => (
               <a
                 key={i}
-                className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 text-[15px] font-bold"
+                className={`relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:after:origin-left focus-visible:after:scale-x-100 text-[15px] font-bold ${
+                  selectedNav === list.navigate
+                    ? "after:origin-left after:scale-x-100"
+                    : ""
+                }`}
                 href={list.navigate}
+                onClick={() => setSelectedNav(list.navigate)}
               >
                 {list.text}
               </a>
@@ -99,8 +105,13 @@ const Nav = () => {
           {navList.map((list, i) => (
             <a
               key={i}
-              className="relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 text-[20px] font-bold"
+              className={`relative after:absolute after:left-0 after:bottom-1 after:h-[.5px] after:w-full after:bg-current after:origin-right after:scale-x-0 after:transition-transform after:duration-300 hover:after:origin-left hover:after:scale-x-100 focus-visible:after:origin-left focus-visible:after:scale-x-100 text-[20px] font-bold ${
+                selectedNav === list.navigate
+                  ? "after:origin-left after:scale-x-100"
+                  : ""
+              }`}
               href={list.navigate}
+              onClick={() => setSelectedNav(list.navigate)}
             >
               {list.text}
             </a>
