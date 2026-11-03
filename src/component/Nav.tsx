@@ -9,38 +9,42 @@ import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(useGSAP);
 
-const Nav = () => {
+type NavProps = {
+  onIntroComplete: () => void;
+};
+
+const Nav = ({ onIntroComplete }: NavProps) => {
   const [isMenuOpen, setIsMenuOpen] = useState<boolean>(false);
   const [selectedNav, setSelectedNav] = useState<string | null>(null);
 
   const { navList } = NavLinkContent();
 
   const navRef = useRef<HTMLElement>(null);
-  const textRef = useRef<HTMLDivElement>(null);
-  // const tl = gsap.timeline();
 
   useGSAP(
     () => {
       if (!navRef.current) return;
-      // if (!textRef.current) return;
 
-      gsap.from(navRef.current, {
-        yPercent: -100,
-        opacity: 0,
-        duration: 1,
-        ease: "linear",
-        // staggers: true,
-      });
-
-      gsap.from(textRef.current, {
-        opacity: 0,
-        duration: 1,
-        delay: 1.2,
-        ease: "linear",
-        // staggers: 0.1,
-      });
+      gsap
+        .timeline({ onComplete: onIntroComplete })
+        .from(navRef.current, {
+          yPercent: -100,
+          autoAlpha: 0,
+          duration: 1,
+          ease: "linear",
+        })
+        .from(
+          ".nav-intro-item",
+          {
+            autoAlpha: 0,
+            duration: 0.5,
+            stagger: 0.1,
+            ease: "linear",
+          },
+          ">",
+        );
     },
-    { scope: navRef },
+    { scope: navRef, dependencies: [onIntroComplete] },
   );
 
   return (
@@ -54,14 +58,13 @@ const Nav = () => {
     >
       <div className="flex flex-row justify-between items-center w-full">
         <div
-          ref={textRef}
           onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-          className="link max-w-10 lg:mr-50 md:mr-40 mr-5"
+          className="nav-intro-item link max-w-10 lg:mr-50 md:mr-40 mr-5"
         >
           <img src={logo} alt="logo image" aria-label="logo" />
         </div>
         <div className="md:grow">
-          <div ref={textRef} className=" block md:hidden cursor-pointer">
+          <div className="nav-intro-item block md:hidden cursor-pointer">
             {isMenuOpen ? (
               <LiaTimesCircle
                 className="text-[30px]"
@@ -76,8 +79,7 @@ const Nav = () => {
           </div>
 
           <div
-            ref={textRef}
-            className="link hidden md:flex md:flex-row gap-3 justify-between items-center"
+            className="nav-intro-item link hidden md:flex md:flex-row gap-3 justify-between items-center"
           >
             {navList.map((list, i) => (
               <a
@@ -99,7 +101,6 @@ const Nav = () => {
 
       {isMenuOpen && (
         <div
-          ref={textRef}
           className="text flex md:hidden flex-col  justify-between items-start mt-3"
         >
           {navList.map((list, i) => (

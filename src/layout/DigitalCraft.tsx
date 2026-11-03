@@ -40,7 +40,9 @@ const DigitalCraft = () => {
           ease: "none",
           scrollTrigger: {
             trigger: viewportElement,
+            start: "bottom 90%",
             pin: true,
+            pinSpacing: true,
             scrub: 1,
             end: () => `+=${getDistance()}`,
             invalidateOnRefresh: true,
@@ -56,7 +58,7 @@ const DigitalCraft = () => {
     <section
       ref={container}
       id="digital"
-      className="relative z-300 text-white flex flex-col scroll-mt-10"
+      className="relative z-300 text-white scroll-mt-10"
     >
       <div ref={nameRef} className="whitespace-nowrap w-full  relative px-3 ">
         <h1 ref={lineRef} className="whitespace-nowrap inline-block mt-5">

@@ -7,7 +7,11 @@ import SplitText from "gsap/src/SplitText";
 
 gsap.registerPlugin(useGSAP, SplitText);
 
-const Hero = () => {
+type HeroProps = {
+  startIntro: boolean;
+};
+
+const Hero = ({ startIntro }: HeroProps) => {
   const lineRef = useRef(null);
   const container = useRef<HTMLDivElement>(undefined as any);
 
@@ -17,58 +21,52 @@ const Hero = () => {
     measureRef: lineRef,
   });
   const shortRef = useRef<HTMLDivElement>(null);
+  const backgroundRef = useRef<HTMLDivElement>(null);
 
   useGSAP(
     () => {
-      const tl = gsap.timeline({
-        defaults: {
-          opacity: 0,
-          ease: "power4",
-          duration: 1,
-          stagger: 0.05,
-        },
-      });
-      if (!lineRef.current) return;
+      if (!lineRef.current || !shortRef.current || !backgroundRef.current) {
+        return;
+      }
 
-      SplitText.create(lineRef.current, {
-        type: "chars",
-        autoSplit: true,
-        onSplit: (self) => {
-          return tl.from(self.chars, {
-            y: 10,
-            opacity: 0,
-            // delay: 1.5,
-            // duration: 1,
-            // stagger: 0.05,
+      const nameSplit = SplitText.create(lineRef.current, { type: "chars" });
+      const shortSplit = SplitText.create(shortRef.current, { type: "lines" });
+
+      gsap.set(nameSplit.chars, { y: 10, autoAlpha: 0 });
+      gsap.set(backgroundRef.current, { yPercent: 100, autoAlpha: 0 });
+      gsap.set(shortSplit.lines, { y: 50, autoAlpha: 0 });
+
+      if (startIntro) {
+        gsap
+          .timeline()
+          .to(nameSplit.chars, {
+            y: 0,
+            autoAlpha: 1,
+            duration: 1,
+            stagger: 0.05,
+            ease: "power4",
+          })
+          .to(backgroundRef.current, {
+            yPercent: 0,
+            autoAlpha: 1,
+            duration: 1,
+            ease: "power4",
+          })
+          .to(shortSplit.lines, {
+            y: 0,
+            autoAlpha: 1,
+            duration: 1,
+            stagger: 0.05,
             ease: "power4",
           });
-        },
-      });
-      tl.from(".background", {
-        yPercent: 100,
-        // delay: 2.3,
-        // duration: 1,
-        // opacity: 0,
-      });
+      }
 
-      SplitText.create(shortRef.current, {
-        type: "lines",
-        autoSplit: true,
-        onSplit: (self) => {
-          return tl.from(self.lines, {
-            y: 50,
-            // opacity: 0,
-            // delay: 2,
-            // duration: 1,
-            // stagger: 0.05,
-            ease: "power4",
-          });
-        },
-      });
-
-      // return () => split.revert();
+      return () => {
+        nameSplit.revert();
+        shortSplit.revert();
+      };
     },
-    { scope: container },
+    { scope: container, dependencies: [startIntro], revertOnUpdate: true },
   );
 
   return (
@@ -103,7 +101,10 @@ const Hero = () => {
       </div>
 
       {/* image background */}
-      <div className="w-full absolute left-0 -bottom-50  z-1 background">
+      <div
+        ref={backgroundRef}
+        className="w-full absolute left-0 -bottom-50  z-1 background"
+      >
         <img
           className="block h-[70vh] w-full"
           src={background}
