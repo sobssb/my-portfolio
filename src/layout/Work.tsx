@@ -48,7 +48,7 @@ const Work = () => {
             start: "top 80%",
             end: "top 30%",
             scrub: true,
-            markers: true,
+            // markers: true,
             invalidateOnRefresh: true,
             trigger: imageFrame,
           },

@@ -27,7 +27,7 @@ const DigitalCraft = () => {
     () => {
       const mm = gsap.matchMedia();
 
-      mm.add("(min-width: 768px)", () => {
+      mm.add("(min-width: 200px)", () => {
         const trackElement = track.current;
         const viewportElement = viewport.current;
         if (!trackElement || !viewportElement) return;
