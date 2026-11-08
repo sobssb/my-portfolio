@@ -47,7 +47,7 @@ const Footer = () => {
           ease: "power4",
         })
         .from(footlink.current, {
-          y: "200",
+          // y: "200",
           opacity: 0,
           stagger: 0.05,
           ease: "power4",

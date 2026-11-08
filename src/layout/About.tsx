@@ -19,8 +19,10 @@ const About = () => {
   const lineRef = useRef(null);
   const container = useRef<HTMLDivElement>(undefined as any);
   const imageDrag = useRef<HTMLImageElement>(undefined as any);
-
-  const textRef = useRef(null);
+  const aboutCards = useRef<HTMLDivElement[]>([]);
+  const subTitles = useRef<HTMLHeadingElement[]>([]);
+  const titles = useRef<HTMLHeadingElement[]>([]);
+  const copy = useRef<HTMLParagraphElement[][]>([]);
 
   const nameRef = useElementSize<HTMLDivElement>({
     minSize: 24,
@@ -39,20 +41,66 @@ const About = () => {
         inertia: true,
       });
 
-      if (!textRef.current) return;
+      aboutCards.current.forEach((card, index) => {
+        const subTitle = subTitles.current[index];
+        const title = titles.current[index];
+        const textElements = copy.current[index]?.filter(
+          (element): element is HTMLParagraphElement => Boolean(element),
+        ) ?? [];
 
-      SplitText.create(textRef.current, {
-        type: "lines",
-        autoSplit: true,
-        onSplit: (self) => {
-          return gsap.from(self.lines, {
-            y: 10,
-            opacity: 0,
-            duration: 1,
-            stagger: 0.05,
-            ease: "power4",
+        if (subTitle) {
+          SplitText.create(subTitle, {
+            type: "chars",
+            autoSplit: true,
+            onSplit: (self) =>
+              gsap.fromTo(
+                self.chars,
+                { y: 12, autoAlpha: 0 },
+                {
+                  y: 0,
+                  autoAlpha: 1,
+                  duration: 1,
+                  ease: "none",
+                  stagger: 0.04,
+                  scrollTrigger: {
+                    trigger: card,
+                    start: "top 60%",
+                    end: "top 30%",
+                    scrub: true,
+                  },
+                },
+              ),
           });
-        },
+        }
+
+        const textToSplit = [title, ...textElements].filter(
+          (element): element is HTMLParagraphElement => Boolean(element),
+        );
+
+        if (textToSplit.length > 0) {
+          SplitText.create(textToSplit, {
+            type: "chars",
+            autoSplit: true,
+            onSplit: (self) =>
+              gsap.fromTo(
+                self.chars,
+                { color: "#a3a3a3", opacity: 0 },
+                {
+                  color: "#ffffff",
+                  opacity: 1,
+                  duration: 1,
+                  ease: "none",
+                  stagger: 0.15,
+                  scrollTrigger: {
+                    trigger: card,
+                    start: "top 60%",
+                    end: "top 30%",
+                    scrub: true,
+                  },
+                },
+              ),
+          });
+        }
       });
 
       gsap.to(".arrow", {
@@ -83,20 +131,34 @@ const About = () => {
           <img ref={imageDrag} src={image} alt="avater for me" />
         </div>
         <div>
-          {aboutList.map((list, i) => (
+          {aboutList.map((list, sectionIndex) => (
             <div
-              key={i}
+              ref={(element) => {
+                if (element) aboutCards.current[sectionIndex] = element;
+                else delete aboutCards.current[sectionIndex];
+              }}
+              key={sectionIndex}
               className="mt-30 grid grid-cols-1 gap-y-3 md:grid-cols-5 md:gap-y-0 text-white"
             >
               <h3
-                className={`text-[10.5px] font-semibold tracking-[0.08em]  md:col-start-1 md:row-start-1 ${i < 2 ? "md:justify-self-end md:text-right" : "md:px-3"}`}
+                ref={(element) => {
+                  if (element) subTitles.current[sectionIndex] = element;
+                  else delete subTitles.current[sectionIndex];
+                }}
+                className={`text-[10.5px] font-semibold tracking-[0.08em]  md:col-start-1 md:row-start-1 ${sectionIndex < 2 ? "md:justify-self-end md:text-right" : "md:px-3"}`}
               >
                 {list.subTitle}
               </h3>
               <div
-                className={`min-w-0 md:row-start-1 ${i < 2 ? "md:col-start-3 md:col-span-2" : "md:col-start-2 md:col-span-2"}`}
+                className={`min-w-0 md:row-start-1 ${sectionIndex < 2 ? "md:col-start-3 md:col-span-2" : "md:col-start-2 md:col-span-2"}`}
               >
-                <h2 className="mb-0 text-3xl leading-[1.12] ">
+                <h2
+                  ref={(element) => {
+                    if (element) titles.current[sectionIndex] = element;
+                    else delete titles.current[sectionIndex];
+                  }}
+                  className="mb-0 text-3xl leading-[1.12] "
+                >
                   {list.title}
                   <span className="span text-[whitesmoke]">
                     {" "}
@@ -104,20 +166,37 @@ const About = () => {
                   </span>
                 </h2>
 
-                {list.text?.map((info, i) => (
+                {list.text?.map((info, textIndex) => (
                   <p
-                    ref={textRef}
-                    key={i}
+                    ref={(element) => {
+                      const sectionCopy =
+                        copy.current[sectionIndex] ??
+                        (copy.current[sectionIndex] = []);
+                      if (element) sectionCopy[textIndex] = element;
+                      else delete sectionCopy[textIndex];
+                    }}
+                    key={textIndex}
                     className="mt-5 text-[19.5px] leading-[1.2] "
                   >
                     {info}
                   </p>
                 ))}
 
-                {list.journey?.map((info, i) => (
+                {list.journey?.map((info, journeyIndex) => (
                   <p
-                    ref={textRef}
-                    key={i}
+                    ref={(element) => {
+                      const copyIndex =
+                        (list.text?.length ?? 0) + journeyIndex;
+                      const sectionCopy =
+                        copy.current[sectionIndex] ??
+                        (copy.current[sectionIndex] = []);
+                      if (element) {
+                        sectionCopy[copyIndex] = element;
+                      } else {
+                        delete sectionCopy[copyIndex];
+                      }
+                    }}
+                    key={journeyIndex}
                     className="mt-5 text-[19.5px] leading-[1.2] "
                   >
                     <span className="span text-[whitesmoke]">

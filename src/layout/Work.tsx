@@ -11,9 +11,8 @@ gsap.registerPlugin(useGSAP, ScrollTrigger);
 const Work = () => {
   const { workList } = WorkContent();
   const container = useRef<HTMLDivElement>(undefined as any);
-  const img = useRef(null);
-  const text = useRef(null);
-  const title = useRef(null);
+  const imageFrames = useRef<HTMLDivElement[]>([]);
+  const copies = useRef<HTMLDivElement[]>([]);
   const lineRef = useRef(null);
 
   const nameRef = useElementSize<HTMLDivElement>({
@@ -26,16 +25,8 @@ const Work = () => {
 
   useGSAP(
     () => {
-      if (!container.current) return;
-
-      const cards =
-        container.current.querySelectorAll<HTMLElement>("[data-work-card]");
-
-      cards.forEach((card) => {
-        const imageFrame = card.querySelector<HTMLElement>(
-          "[data-work-image-trigger]",
-        );
-        const copy = card.querySelector<HTMLElement>("[data-work-copy]");
+      imageFrames.current.forEach((imageFrame, index) => {
+        const copy = copies.current[index];
 
         if (!imageFrame || !copy) return;
 
@@ -91,21 +82,26 @@ const Work = () => {
       </div>
 
       <div className="px-3">
-        {workList.map((list) => (
-          <div key={list.id} data-work-card className="mb-5">
+        {workList.map((list, index) => (
+          <div key={list.id} className="mb-5">
             <div
-              data-work-image-trigger
-              ref={img}
+              ref={(element) => {
+                if (element) imageFrames.current[index] = element;
+                else delete imageFrames.current[index];
+              }}
               className="w-full h-60 bg-red-900 rounded-[10px]"
             ></div>
 
-            <div data-work-copy>
+            <div
+              ref={(element) => {
+                if (element) copies.current[index] = element;
+                else delete copies.current[index];
+              }}
+            >
               <div className="flex row gap-3 justify-between items-start mt-4 mb-7">
                 <div>
-                  <h2 ref={title}>{list.title}</h2>
-                  <p ref={text} className="max-w-150">
-                    {list.text}
-                  </p>
+                  <h2>{list.title}</h2>
+                  <p className="max-w-150">{list.text}</p>
                 </div>
                 <div className="font-bold">({list.id})</div>
               </div>
